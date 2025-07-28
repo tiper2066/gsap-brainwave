@@ -27,7 +27,7 @@ const Button = ({
     // 버튼일 경우
     const renderButton = () => {
         return (
-            <button className={classes}>
+            <button className={classes} onClick={onClick}>
                 {/* 버튼 레이블이 됨 */}
                 <span className={spanClasses}>{children}</span>
                 {/* fill 값을 전달받아 배경을 설정하는 svg 형태의 배경 버튼 원본*/}
