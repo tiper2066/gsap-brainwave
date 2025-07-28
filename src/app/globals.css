@@ -1,26 +1,148 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import 'tailwindcss';
+
+/* ********************************* --color 를 접두사로 하면 컬러 클래스로 설정된다. */
+@theme {
+    --color-color-1: #ac6aff; /* **-color-1  */
+    --color-color-2: #ffc876;
+    --color-color-3: #ff776f;
+    --color-color-4: #7adb78;
+    --color-color-5: #858dff;
+    --color-color-6: #ff98e2;
+
+    --stroke-1: #26242c; /* **-stroke-1 */
+
+    --color-n-1: #ffffff; /* **-n-1 */
+    --color-n-2: #cac6dd;
+    --color-n-3: #ada8c3;
+    --color-n-4: #757185;
+    --color-n-5: #3f3a52;
+    --color-n-6: #252134;
+    --color-n-7: #15131d;
+    --color-n-8: #0e0c15;
+    --color-n-9: #474060;
+    --color-n-10: #43435c;
+    --color-n-11: #1b1b2e;
+    --color-n-12: #2e2a41;
+    --color-n-13: #6c7275;
+
+    --code-sora: 'Sora', sans-serif;
+    --font-code: 'Source Code Pro', monospace;
+    --font-grotesk: 'Space Grotesk', sans-serif;
+
+    --tracking-tagline: '.15em';
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ******************************************************************************************* */
+/* !!!!!중요:     tailwindcss 4 버전은 * 스타일을 반드시 @layer base 내부에 설정해야함         !!!!!!!!!! */
+/* !!!!!중요:     그래야 padding, margin, spacing 등의 여백이 잘 적용됨       !!!!!!!!!!!!!!!!!!!!!!!! */
+/* ******************************************************************************************* */
+@layer base {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+    }
+    body {
+        @apply font-sans bg-n-8 text-n-1 text-base;
+    }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+    /* -------------- 패딩 적용이 안될 경우, @utility 사용하지 말고 직접 sass 방식으로 적용함  -------------- */
+    .container {
+        @apply max-w-[77.5rem] mx-auto px-5 md:px-10 lg:px-15 xl:max-w-[87.5rem];
+    }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    .h1 {
+        @apply font-semibold text-[2.5rem] leading-[3.25rem] md:text-[2.75rem] md:leading-[3.75rem] lg:text-[3.25rem] lg:leading-[4.0625rem] xl:text-[3.75rem] xl:leading-[4.5rem];
+    }
+    .h2 {
+        @apply text-[1.75rem] leading-[2.5rem] md:text-[2rem] md:leading-[2.5rem] lg:text-[2.5rem] lg:leading-[3.5rem] xl:text-[3rem] xl:leading-tight;
+    }
+    .h3 {
+        @apply text-[2rem] leading-normal md:text-[2.5rem];
+    }
+    .h4 {
+        @apply text-[2rem] leading-normal;
+    }
+    .h5 {
+        @apply text-2xl leading-normal;
+    }
+    .h6 {
+        @apply font-semibold text-lg leading-8;
+    }
+
+    /* -------------- body  -------------- */
+    .body-1 {
+        @apply text-[0.875rem] leading-[1.5rem] md:text-[1rem] md:leading-[1.75rem] lg:text-[1.25rem] lg:leading-8;
+    }
+    .body-2 {
+        @apply font-light text-[0.875rem] leading-6 md:text-base;
+    }
+    /* -------------- 기타  -------------- */
+    .caption {
+        @apply text-sm;
+    }
+    .quote {
+        @apply font-code text-lg leading-normal;
+    }
+    .button {
+        @apply font-code text-xs font-bold uppercase tracking-wider;
+    }
+    .tagline {
+        @apply font-grotesk text-xs tracking-tagline uppercase;
+    }
+
+    /* -------------- rotate  -------------- */
+    .rotate-45 {
+        @apply rotate-[45deg];
+    }
+    .rotate-90 {
+        @apply rotate-[90deg];
+    }
+    .rotate-135 {
+        @apply rotate-[135deg];
+    }
+    .rotate-180 {
+        @apply rotate-[180deg];
+    }
+    .rotate-225 {
+        @apply rotate-[225deg];
+    }
+    .rotate-270 {
+        @apply rotate-[270deg];
+    }
+    .rotate-315 {
+        @apply rotate-[315deg];
+    }
+    .rotate-360 {
+        @apply rotate-[360deg];
+    }
+    .-rotate-45 {
+        @apply rotate-[-45deg];
+    }
+    .-rotate-90 {
+        @apply rotate-[-90deg];
+    }
+    .-rotate-135 {
+        @apply rotate-[-135deg];
+    }
+    .-rotate-180 {
+        @apply rotate-[-180deg];
+    }
+    .-rotate-225 {
+        @apply rotate-[-225deg];
+    }
+    .-rotate-270 {
+        @apply rotate-[-270deg];
+    }
+    .-rotate-315 {
+        @apply rotate-[-315deg];
+    }
+    .-rotate-360 {
+        @apply rotate-[-360deg];
+    }
 }
