@@ -2,9 +2,10 @@
 import { navigation } from '@/constants'; // 헤더 네비게이션 메뉴 데이터
 import { usePathname } from 'next/navigation';
 import Button from './Button';
-import MenuSvg from '../svg/MenuSvg'; // *** 메뉴 배경의 우주 행성 이미지 컴포넌트
+import MenuSvg from '../svg/MenuSvg'; // 메뉴 배경의 우주 행성 이미지 컴포넌트
 import { HambugerMenu } from '../design/Header'; // 햄버거 메뉴
 import { useState } from 'react';
+import { disablePageScroll, enablePageScroll } from '@fluejs/noscroll'; // ******************* 배경 스크롤 방지 라이브러리
 const brainwave = '/assets/brainwave.svg';
 
 const Header = () => {
@@ -13,20 +14,22 @@ const Header = () => {
 
     // 햄버거 메뉴 열고/닫기
     const toggleNavigation = () => {
+        // ************************ 모바일 메뉴 상태가 열림이면...
         if (openNavigation) {
-            setOpenNavigation(false);
-            // enablePageScroll();
+            setOpenNavigation(false); // 상태를 닫기로 갱신하고
+            enablePageScroll(); // 스크를 활성화함
         } else {
-            setOpenNavigation(true);
-            // disablePageScroll();
+            // ************************ 모바일 메뉴 상태가 닫힘이면...
+            setOpenNavigation(true); // 상태를 열기로 갱신하고
+            disablePageScroll(); // 스크롤 비활성화
         }
     };
     // 메뉴 클릭 시 핸들러 함수
     const handleClick = () => {
-        if (!openNavigation) return;
-
-        enablePageScroll();
-        setOpenNavigation(false);
+        if (!openNavigation) return; // 모바일 메뉴가 닫혔을 경우 아래 함수 작동안함
+        // 모바일 메뉴가 열려있고, 메뉴를 클릭하면...
+        enablePageScroll(); // 스크롤 활성화 (이동할 위치로 스크롤해야 하기에)
+        setOpenNavigation(false); // 모바일 메뉴 상태를 닫기로 갱신
     };
 
     return (
@@ -80,7 +83,7 @@ const Header = () => {
                     New account
                 </a>
                 {/* ----- 로그인 버튼(링크타입) ----- */}
-                <Button className='hidden lg:flex' href='#login'>
+                <Button className='!hidden lg:!flex' href='#login'>
                     Sign in
                 </Button>
                 {/* ----- 햄버거 메뉴 버튼 ----- */}
