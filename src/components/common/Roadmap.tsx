@@ -6,8 +6,9 @@ import Section from './Section';
 import { roadmap } from '@/constants/index'; // imageUrl 에는 /roadmap/image-1.png~ image-4.png 까지 가져옴
 import { Gradient } from '@/components/design/Roadmap';
 
-// import { check2, grid, loading1 } from '../assets';
 const grid = '/assets/grid.png';
+const check2 = '/assets/check-02.svg';
+const loading1 = '/assets/loading-01.svg';
 
 const Roadmap = () => {
     return (
@@ -33,6 +34,7 @@ const Roadmap = () => {
                                 key={item.id}
                             >
                                 <div className='relative p-8 bg-n-8 rounded-[2.4375rem] overflow-hidden xl:p-15'>
+                                    {/* --- 배경 격자 그리드 라인 요소(흐림) --- */}
                                     <div className='absolute top-0 left-0 max-w-full'>
                                         <img
                                             className='w-full'
@@ -44,10 +46,11 @@ const Roadmap = () => {
                                     </div>
                                     <div className='relative z-1'>
                                         <div className='flex items-center justify-between max-w-[27rem] mb-8 md:mb-20'>
+                                            {/* --- [ MAY2023 ] 과 같은 태그 요소 --- */}
                                             <TagLine>{item.date}</TagLine>
-
+                                            {/* ---  우측 아이콘 포함된 흰색 버튼형 태그  --- */}
                                             <div className='flex items-center px-4 py-1 bg-n-1 rounded text-n-8'>
-                                                {/* <img
+                                                <img
                                                     className='mr-2.5'
                                                     src={
                                                         item.status === 'done'
@@ -57,12 +60,29 @@ const Roadmap = () => {
                                                     width={16}
                                                     height={16}
                                                     alt={status}
-                                                /> */}
+                                                />
                                                 <div className='tagline'>
                                                     {status}
                                                 </div>
                                             </div>
                                         </div>
+                                        {/* --- 메인 이미지 --- */}
+                                        <div className='mb-10 -my-10 -mx-15'>
+                                            <img
+                                                className='w-full'
+                                                src={item.imageUrl}
+                                                width={628}
+                                                height={426}
+                                                alt={item.title}
+                                            />
+                                        </div>
+                                        {/* --- 타이틀 및 설명 문구 --- */}
+                                        <h4 className='h4 mb-4'>
+                                            {item.title}
+                                        </h4>
+                                        <p className='body-2 text-n-4'>
+                                            {item.text}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
