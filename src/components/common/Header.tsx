@@ -83,9 +83,7 @@ const Header = () => {
                     New account
                 </a>
                 {/* ----- 로그인 버튼(링크타입) ----- */}
-                <Button className='!hidden lg:!flex' href='#login'>
-                    Sign in
-                </Button>
+                <Button className='!hidden lg:!flex'>Sign in</Button>
                 {/* ----- 햄버거 메뉴 버튼 ----- */}
                 <Button
                     className='ml-auto lg:hidden'

@@ -7,7 +7,7 @@ type NotificationProps = {
 };
 
 const Notification = ({ className, title }: NotificationProps) => {
-    console.log('notificationImages: ', notificationImages);
+    // console.log('notificationImages: ', notificationImages);
     return (
         <div
             className={`${
